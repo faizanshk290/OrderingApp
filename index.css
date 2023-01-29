@@ -1,0 +1,203 @@
+body
+{
+    margin: 0;
+    font-family: 'Smythe', cursive;
+}
+
+header,main
+{
+    width: 600px;
+    margin: 0 auto;
+}
+
+header
+{
+    height: 167px;
+    background-image: url("images/restaurant.png");
+    background-size: cover;   
+}
+
+main
+{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+h2,p
+{
+    margin: 0;
+}
+
+input
+{
+    font-size: 15px;
+    width: 100%;
+    padding: 10px 15px ;
+    box-sizing: border-box;
+}
+
+.menu-container,.menu-inner
+{
+    display: flex;
+}
+
+.menu-container
+{
+    flex-direction: column;
+    width: 550px;
+    margin: 0px auto;
+}
+
+.menu-inner
+{
+    width: 550px;
+    align-items: center;
+    gap: 25px;
+    padding: 45px 0px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.menu-para
+{
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.item-name
+{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.item-ingredients
+{
+    color: darkgray;
+}
+
+.item-price,.add-btn
+{
+    font-size: 20px;
+}
+
+.add-btn
+{
+    width: 45px;
+    height: 45px;
+    margin-left: auto;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+    background-color: transparent;
+}
+
+.order-container
+{
+    display: flex;
+    width: 550px;
+    height: 319px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-inner
+{
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    padding: 20px 0px;
+    margin-top: auto;
+    border-bottom: 2px solid black;
+}
+
+.order
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 550px;
+}
+
+.remove-btn
+{
+    color: gray;
+    border: none;
+    margin-top: 5px;
+    background-color: transparent;
+}
+
+.order-btn
+{
+    font-size: 16px;
+    border: none;
+    background-color: #16DB99;
+    width: 550px;
+    font-weight: bold;
+    color: white;
+    padding: 15px;
+    margin-top: auto;
+}
+
+.total-price-div
+{
+    margin: 10px 0;
+}
+
+.move-right
+{
+    margin-left: auto;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.modal
+{
+    display: none;
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    flex-direction: column; 
+    background: white;
+    padding: 25px;
+    box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.518);
+}
+
+.modal-inner
+{
+    display: flex;
+    flex-direction: column; 
+    gap: 25px;
+    margin-top: auto;
+    justify-content: space-between;
+}
+
+.pay-btn
+{
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 0px;
+    background-color: #16DB99;
+    border: none;
+    color: white;
+}
+
+.thanks-container
+{
+    display: none;
+    width: 550px;
+    text-align: center;
+    font-size: 25px;
+    color: green;
+    padding: 25px;
+    background-color: #ECFDF5;
+    box-sizing: border-box;
+}

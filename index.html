@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Faizan's Diner</title>
+        <link rel="stylesheet" href="index.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Smythe&display=swap');
+        </style>
+    </head>
+    <body>
+
+        <header></header>
+
+        <main>
+
+            <div id="menu-container" class="menu-container">
+                <div class="menu-inner">
+                </div>
+            </div>
+
+            <div id="order-container" class="order-container hidden">
+                <h2>Your Order</h3>
+                    <div id="order-inner" class="order-inner">
+                    </div>
+                    <div class="order total-price-div">
+                        <p class="item-name">Total price:</p>
+                        <p id="total-price" class="item-price move-right"></p>
+                    </div>
+                <button id="order-btn" class="order-btn">Complete Order</button>
+            </div>
+
+            <div id="thanks-container" class="thanks-container">
+                
+            </div>
+
+        </main>
+
+        <div id="modal" class="modal">
+            <h2>Enter card details</h2>
+            <form id="card-details-form" class="modal-inner">
+                <input type="text" name="fullname" maxlength="32" placeholder="Enter your name" required>
+                <input type="text" name="cardno" maxlength="16" placeholder="Enter card number" required>
+                <input type="password" maxlength="3" name="cvv" placeholder="Enter CVV" required>
+                <button id="pay-btn" class="pay-btn" type="submit">Pay</button>
+            </form>
+        </div>
+
+        
+
+        <script src="index.js" type="module"></script>
+
+    </body>
+</html>
