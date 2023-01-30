@@ -1,105 +1,108 @@
-import { menuArray } from '/data.js'
+import { menuArray } from "/data.js";
 
-let sumPrice = 0
-let itemListLength = 0
+let sumPrice = 0;
+let itemListLength = 0;
 
-const formEl = document.getElementById('card-details-form')
-const orderContainerEl = document.getElementById('order-container')
-const modalContainerEl = document.getElementById("modal")
-const thanksContainerEl = document.getElementById('thanks-container')
+const formEl = document.getElementById("card-details-form");
+const orderContainerEl = document.getElementById("order-container");
+const modalContainerEl = document.getElementById("modal");
+const thanksContainerEl = document.getElementById("thanks-container");
 
 document.addEventListener("click", (e) => {
-    if (e.target.dataset.item) {
-        handleAddClick(e.target.dataset.item)
-    }
-    else if (e.target.id === 'order-btn') {
-        handleOrderClick()
-    }
-    else if (e.target.id === 'remove-btn') {
-        handleRemoveClick(document.getElementById(e.target.id).parentElement)
-    }
-})
+  if (e.target.dataset.item) {
+    handleAddClick(e.target.dataset.item);
+  } else if (e.target.id === "order-btn") {
+    handleOrderClick();
+  } else if (e.target.id === "remove-btn") {
+    handleRemoveItemClick(e.target.parentNode);
+  }
+});
 
-function handleRemoveClick(targetElement) {
-    let numberString = targetElement.children[2].innerText
-    targetElement.remove()
-    itemListLength -= 1
-    sumPrice -= Number(numberString.substring(1))
-    if (itemListLength == 0) {
-        orderContainerEl.classList.toggle('hidden')
-    }
-    document.getElementById('total-price').innerText = `$${sumPrice}`
+function handleRemoveItemClick(targetElement) {
+  let parentElement = targetElement.parentNode;
+  let childNode = targetElement;
+  let itemPrice = Number(targetElement.children[2].innerText.substring(1));
+  parentElement.removeChild(childNode);
+  itemListLength -= 1;
+  sumPrice -= itemPrice;
+  document.getElementById("total-price").innerText = `$${sumPrice}`;
+  console.log(itemListLength);
+  if (itemListLength === 0) {
+    orderContainerEl.classList.toggle("hidden");
+  }
 }
 
 formEl.addEventListener("submit", (e) => {
-    e.preventDefault()
+  e.preventDefault();
 
-    const formData = new FormData(formEl)
+  const formData = new FormData(formEl);
 
-    modalContainerEl.style.display = 'none'
+  modalContainerEl.style.display = "none";
 
-    orderContainerEl.classList.toggle('hidden')
+  orderContainerEl.classList.toggle("hidden");
 
-    thanksContainerEl.style.display = 'block'
+  thanksContainerEl.style.display = "block";
 
-    thanksContainerEl.innerText = `Thanks, ${formData.get('fullname')}! Your order is on its way!
-    `
-    formEl.reset();
+  thanksContainerEl.innerText = `Thanks, ${formData.get(
+    "fullname"
+  )}! Your order is on its way!
+    `;
+  formEl.reset();
 
-    document.getElementById('order-inner').innerHTML = ''
+  document.getElementById("order-inner").innerHTML = "";
 
-    sumPrice = 0
-})
+  sumPrice = 0;
+
+  itemListLength = 0;
+});
 
 function handleOrderClick() {
-    const modalContainerEl = document.getElementById("modal")
-    modalContainerEl.style.display = "flex"
+  const modalContainerEl = document.getElementById("modal");
+  modalContainerEl.style.display = "flex";
 }
 
 function handleAddClick(itemId) {
-    const itemObject = menuArray.filter(function (item) {
-        return item.id == itemId
-    })[0]
+  const itemObject = menuArray.filter(function (item) {
+    return item.id == itemId;
+  })[0];
 
-    sumPrice += itemObject.price
+  sumPrice += itemObject.price;
 
-    orderContainerEl.classList.remove('hidden')
+  orderContainerEl.classList.remove("hidden");
 
-    thanksContainerEl.style.display = 'none'
+  thanksContainerEl.style.display = "none";
 
-    itemListLength += 1
+  itemListLength += 1;
 
-    document.getElementById('order-inner').innerHTML += getOrderHtmlString(itemObject)
+  document.getElementById("order-inner").innerHTML +=
+    getOrderHtmlString(itemObject);
 
-    document.getElementById('total-price').innerText = `$${sumPrice}`
+  document.getElementById("total-price").innerText = `$${sumPrice}`;
 }
 
 function getOrderHtmlString(itemObject) {
-    let orderHtmlString = ''
-    orderHtmlString +=
-        `
+  let orderHtmlString = "";
+  orderHtmlString += `
         <div class="order">
             <p class="item-name">${itemObject.name}</p>
             <button id="remove-btn" class="remove-btn">remove</button>
             <p class="item-price move-right">$${itemObject.price}</p>
         </div>
-    `
-    return orderHtmlString
+    `;
+  return orderHtmlString;
 }
-
 
 function render() {
-    const menuContainerEl = document.getElementById("menu-container")
-    menuContainerEl.innerHTML = getMenuHtmlString()
+  const menuContainerEl = document.getElementById("menu-container");
+  menuContainerEl.innerHTML = getMenuHtmlString();
 }
 
-render()
+render();
 
 function getMenuHtmlString() {
-    let menuHtmlString = ''
-    menuArray.forEach((item) => {
-        menuHtmlString +=
-            `
+  let menuHtmlString = "";
+  menuArray.forEach((item) => {
+    menuHtmlString += `
             <div class="menu-inner">
                 <img src="${item.emoji}">
                 <div>
@@ -109,7 +112,7 @@ function getMenuHtmlString() {
                 </div>
                 <button id="add-btn" class="add-btn" data-item="${item.id}">+</button>
             </div>
-        `
-    })
-    return menuHtmlString
+        `;
+  });
+  return menuHtmlString;
 }
