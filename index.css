@@ -12,9 +12,12 @@ header,main
 
 header
 {
+    color: #FFFFFF;
     height: 167px;
     background-image: url("images/restaurant.png");
-    background-size: cover;   
+    background-size: cover;
+    padding: 35px 35px;
+    box-sizing: border-box;
 }
 
 main
@@ -26,8 +29,19 @@ main
     gap: 50px;
 }
 
-h2,p
+h1
 {
+    font-size: 45px;
+}
+
+h3
+{
+    font-size: 25px;
+}
+
+h1,h2,h3,p
+{
+    font-weight: 400;
     margin: 0;
 }
 
